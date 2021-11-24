@@ -1,2 +1,2 @@
-# template-svelte-ts
-Provides a bare bones Typescript template repo to get setup with the TyphonJS Runtime Library and Svelte.
+# template-svelte-esm
+Provides a bare bones Typescript template repo to get set up with using the the [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/typhonjs) and [Svelte](https://svelte.dev/). 
