@@ -1,0 +1,36 @@
+{
+  "name": "template-svelte-ts",
+  "description": "Provides a bare bones Typescript template repo to get set up with using the the TyphonJS Runtime Library and Svelte.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "author": "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)",
+  "contributors": [
+    "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
+  ],
+  "dependencies": {
+    "@typhonjs-fvtt/runtime": "github:typhonjs-fvtt-lib/typhonjs",
+    "svelte": "3.44.2"
+  },
+  "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "^0.8.9-7",
+    "@rollup/plugin-commonjs": "^21",
+    "@rollup/plugin-node-resolve": "^13",
+    "@rollup/plugin-typescript": "^8",
+    "@tsconfig/svelte": "^2",
+    "@types/jquery": "^3",
+    "@typhonjs-config/eslint-config": "^0.3.0",
+    "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
+    "eslint": "^8",
+    "rollup": "^2",
+    "svelte-check": "^2",
+    "typescript": "^4",
+    "tslib": "^2"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build-watch": "rollup -c -w",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "eslint": "eslint ."
+  }
+}
