@@ -56,8 +56,8 @@ export default () =>
                browser: true,
                dedupe: ['svelte']
             }),
-            // sourcemaps()
             s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
+            // sourcemaps()
             commonjs(),
             typescript({
                sourceMap: s_SOURCEMAPS,

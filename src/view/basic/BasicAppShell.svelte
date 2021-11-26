@@ -7,7 +7,7 @@
    export let elementRoot: HTMLElement;
    export let message: string;
 
-   const foundryApp = getContext('external').foundryApp;
+   const foundryApp = getContext<{foundryApp: any}>('external').foundryApp;
 
    let draggable = foundryApp.draggable;
    let minimizable = foundryApp.minimizable;
@@ -28,7 +28,7 @@
       });
    }
 
-   function onContextClick(event)
+   function onContextClick(event: MouseEvent)
    {
       TJSMenu.createContext({
          x: event.pageX,

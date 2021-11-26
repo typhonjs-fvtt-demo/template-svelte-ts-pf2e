@@ -7,15 +7,9 @@ export default class BasicApplication extends SvelteApplication
    /**
     * @inheritDoc
     */
-   constructor(options = {}) { super(options); }
+   constructor(options?: Partial<Application.Options>) { super(options); }
 
-   /**
-    * Default Application options
-    *
-    * @returns {object} options - Application options.
-    * @see https://foundryvtt.com/api/Application.html#options
-    */
-   static get defaultOptions()
+   static override get defaultOptions(): Application.Options
    {
       return foundry.utils.mergeObject(super.defaultOptions, {
          id: 'template-svelte-esm',
@@ -23,7 +17,7 @@ export default class BasicApplication extends SvelteApplication
          minimizable: true,
          width: 500,
          height: 320,
-         title: 'Template Svelte (ESM)',
+         title: 'Template Svelte (TS)',
 
          svelte: {
             class: BasicAppShell,

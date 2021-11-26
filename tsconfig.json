@@ -2,11 +2,17 @@
   "extends": "@tsconfig/svelte/tsconfig.json",
 
   "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "es2020",
     "types": ["@league-of-foundry-developers/foundry-vtt-types"],
-    "moduleResolution": "node",
-    "strictNullChecks": true,
+    "baseUrl": "./",
+    "paths" :{
+      "@typhonjs-fvtt/runtime/svelte/application": ["node_modules/@typhonjs-fvtt/runtime/_types/svelte/application/index.d.mts"],
+      "@typhonjs-fvtt/runtime/svelte/application/legacy": ["node_modules/@typhonjs-fvtt/runtime/_types/svelte/application/legacy/index.d.mts"]
+    },
+    "traceResolution": true
   },
-
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "node_modules/@typhonjs-fvtt/runtime"],
   "exclude": ["node_modules/*"]
 }
