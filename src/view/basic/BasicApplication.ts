@@ -1,6 +1,7 @@
 import { SvelteApplication }  from '@typhonjs-fvtt/runtime/svelte/application';
 
-import BasicAppShell          from './BasicAppShell.svelte';
+// import BasicAppShell          from './BasicAppShell.svelte';
+import SimpleTest             from './SimpleTest.svelte';
 
 export default class BasicApplication extends SvelteApplication
 {
@@ -21,7 +22,8 @@ export default class BasicApplication extends SvelteApplication
          title: 'Template Svelte (TS)',
 
          svelte: {
-            class: BasicAppShell,
+            class: SimpleTest,
+            // class: BasicAppShell,
             target: document.body,
             intro: true,
             props: {
