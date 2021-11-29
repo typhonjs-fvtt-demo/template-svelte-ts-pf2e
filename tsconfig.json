@@ -1,18 +1,33 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
-
   "compilerOptions": {
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "target": "es2020",
-    "types": ["@league-of-foundry-developers/foundry-vtt-types"],
-    "baseUrl": "./",
+    "types": ["@league-of-foundry-developers/foundry-vtt-types/lenient"],
+    "baseUrl": ".",
     "paths" :{
       "@typhonjs-fvtt/runtime/svelte/application": ["node_modules/@typhonjs-fvtt/runtime/_types/svelte/application/index.d.mts"],
-      "@typhonjs-fvtt/runtime/svelte/application/legacy": ["node_modules/@typhonjs-fvtt/runtime/_types/svelte/application/legacy/index.d.mts"]
+      "@typhonjs-fvtt/runtime/svelte/application/legacy": ["node_modules/@typhonjs-fvtt/runtime/_types/svelte/application/legacy/index.d.mts"],
     },
-    "traceResolution": true
+
+    /**
+      Svelte Preprocess cannot figure out whether you have a value or a type, so tell TypeScript
+      to enforce using `import type` instead of `import` for Types.
+     */
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    /**
+      To have warnings/errors of the Svelte compiler at the correct position,
+      enable source maps by default.
+     */
+    "sourceMap": true,
+
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "node_modules/@typhonjs-fvtt/runtime"],
+
+  "include": ["src/**/*"],
   "exclude": ["node_modules/*"]
 }

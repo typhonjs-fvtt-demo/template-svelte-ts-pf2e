@@ -11,8 +11,9 @@ export default class BasicApplication extends SvelteApplication
 
    static override get defaultOptions(): Application.Options
    {
+      // @ts-ignore
       return foundry.utils.mergeObject(super.defaultOptions, {
-         id: 'template-svelte-esm',
+         id: 'template-svelte-ts',
          resizable: true,
          minimizable: true,
          width: 500,

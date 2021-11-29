@@ -13,7 +13,7 @@
     "svelte": "3.44.2"
   },
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "^0.8.9-7",
+    "@league-of-foundry-developers/foundry-vtt-types": "github:typhonjs-fvtt-scratch/foundry-vtt-types",
     "@rollup/plugin-commonjs": "^21",
     "@rollup/plugin-node-resolve": "^13",
     "@rollup/plugin-typescript": "^8",
