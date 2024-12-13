@@ -1,108 +1,24 @@
-<script lang="ts">
-   import { getContext }         from 'svelte';
-   import { fade, scale }        from 'svelte/transition';
-   import { TJSDialog, TJSMenu } from '@typhonjs-fvtt/runtime/svelte/application';
-   import { ApplicationShell }   from '@typhonjs-fvtt/runtime/svelte/component/core';
+<script lang=ts>
+   import { ApplicationShell }   from '#runtime/svelte/component/application';
 
    export let elementRoot: HTMLElement;
-   export let message: string;
-
-   const foundryApp = getContext<{foundryApp: any}>('external').foundryApp;
-
-   let draggable = foundryApp.reactive.draggable;
-   let minimizable = foundryApp.reactive.minimizable;
-   let resizable = foundryApp.reactive.resizable;
-
-   $: foundryApp.reactive.draggable = draggable;
-   $: foundryApp.reactive.minimizable = minimizable;
-   $: foundryApp.reactive.resizable = resizable;
-
-   function onClick()
-   {
-      TJSDialog.prompt({
-         title: 'A modal dialog!',
-         draggable: false,
-         modal: true,
-         content: 'A cool modal dialog!',  // You can set content with a Svelte component!
-         label: 'Ok'
-      });
-   }
-
-   function onContextClick(event: MouseEvent)
-   {
-      TJSMenu.createContext({
-         x: event.pageX,
-         y: event.pageY,
-         items: [
-            {
-               label: 'Context menu item 1',
-               icon: 'fas fa-link',
-               onclick: () => console.log('ITEM 1 Selected')
-            },
-            {
-               label: 'Context menu item 2',
-               icon: 'fas fa-key',
-               onclick: () => console.log('ITEM 2 Selected')
-            },
-         ]
-      });
-   }
 </script>
 
+<!-- This is necessary for Svelte to generate accessors TRL can access for `elementRoot` -->
 <svelte:options accessors={true}/>
 
-<ApplicationShell bind:elementRoot transition={scale} transitionOptions={{duration: 1000}}>
-   <main in:fade={{duration: 5000}} on:contextmenu|preventDefault={onContextClick}>
-      <h1>Hello {message}!</h1>
-      <label>
-         Message:&nbsp;<input bind:value={message}>
-      </label>
-      <button on:click={onClick}>Launch a modal dialog</button>
-      <div class=container>
-         Make application:
-         <label><input type=checkbox bind:checked={draggable}> Draggable</label>
-         <label><input type=checkbox bind:checked={minimizable}> Minimizable</label>
-         <label><input type=checkbox bind:checked={resizable}> Resizable</label>
-      </div>
-      <div class=bottom>
-         <a href="https://svelte.dev/tutorial">Interactive Svelte tutorial (highly recommended)</a>
-         <br>
-         <a href="https://www.youtube.com/playlist?list=PLoKaNN3BjQX3mxDEVG3oGJx2ByXnue_gR">Svelte tutorial videos</a>
-      </div>
+<!-- ApplicationShell provides the popOut / application shell frame, header bar, content areas -->
+<!-- ApplicationShell exports `elementRoot` which is the outer application shell element -->
+<ApplicationShell bind:elementRoot>
+   <main>
+      <h1>Basic application</h1>
    </main>
 </ApplicationShell>
 
-<style lang="scss">
+<style lang=scss>
    main {
       text-align: center;
       display: flex;
       flex-direction: column;
-
-      button, div.bottom {
-         margin-top: auto;
-      }
-
-      div.container {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         border-radius: 10px;
-         border: 2px solid rgba(0, 0, 0, 0.2);
-         padding: 10px;
-         margin-top: auto;
-      }
-
-      h1 {
-         color: #ff3e00;
-         text-transform: uppercase;
-         font-size: 4em;
-         font-weight: 100;
-      }
-
-      label {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-      }
    }
 </style>

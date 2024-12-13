@@ -8,30 +8,27 @@
   "contributors": [
     "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
   ],
+  "imports": {
+    "#runtime/*": "@typhonjs-fvtt/runtime/*",
+    "#standard/*": "@typhonjs-fvtt/standard/*"
+  },
   "dependencies": {
-    "@typhonjs-fvtt/runtime": "github:typhonjs-fvtt-lib/typhonjs",
-    "svelte": "3.44.2"
+    "@typhonjs-fvtt/runtime": "^0.2.0-next.5",
+    "@typhonjs-fvtt/standard": "^0.2.0-next.3",
+    "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
+    "svelte": "^4.2.19"
   },
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "github:typhonjs-fvtt-scratch/foundry-vtt-types",
-    "@rollup/plugin-commonjs": "^21",
-    "@rollup/plugin-node-resolve": "^13",
-    "@rollup/plugin-typescript": "^8",
-    "@tsconfig/svelte": "^2",
-    "@types/jquery": "^3",
-    "@typhonjs-config/eslint-config": "^0.3.0",
-    "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
-    "eslint": "^8",
-    "rollup": "^2",
-    "svelte-check": "^2",
-    "svelte-preprocess": "4.9.8",
-    "tslib": "^2",
-    "typescript": "^4.5"
+    "typescript": "^5.7.2"
   },
+  "peerDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "svelte-preprocess": "^6",
+    "vite": "^5"
+  },
+  "browserslist": [">5%", "not IE 11"],
   "scripts": {
-    "build": "rollup -c",
-    "build-watch": "rollup -c -w",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "eslint": "eslint ."
+    "build": "vite build",
+    "dev": "vite"
   }
 }

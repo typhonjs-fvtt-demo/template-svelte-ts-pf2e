@@ -1,34 +1,33 @@
-import { SvelteApplication }  from '@typhonjs-fvtt/runtime/svelte/application';
+import {
+   SvelteApplication,
+   type SvelteApplicationOptions }  from '#runtime/svelte/application';
 
-// import BasicAppShell          from './BasicAppShell.svelte';
-import SimpleTest             from './SimpleTest.svelte';
+import BasicAppShell                from './BasicAppShell.svelte';
 
-export default class BasicApplication extends SvelteApplication
+interface MyOptions extends SvelteApplicationOptions {
+   extra: boolean;
+}
+
+export default class BasicApplication extends SvelteApplication<MyOptions>
 {
-   /**
-    * @inheritDoc
-    */
-   constructor(options?: Partial<Application.Options>) { super(options); }
-
-   static override get defaultOptions(): Application.Options
+   constructor(options?: MyOptions)
    {
-      // @ts-ignore
+      super(options);
+   }
+
+   static get defaultOptions(): MyOptions
+   {
       return foundry.utils.mergeObject(super.defaultOptions, {
+         extra: true,
          id: 'template-svelte-ts',
          resizable: true,
          minimizable: true,
-         width: 500,
-         height: 320,
-         title: 'Template Svelte (TS)',
+         width: 300,
+         title: 'TemplateTS.title',
 
          svelte: {
-            class: SimpleTest,
-            // class: BasicAppShell,
+            class: BasicAppShell,
             target: document.body,
-            intro: true,
-            props: {
-               message: 'Foundry'
-            }
          }
       });
    }
