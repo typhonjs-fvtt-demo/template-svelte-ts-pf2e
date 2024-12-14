@@ -13,18 +13,13 @@
     "#standard/*": "@typhonjs-fvtt/standard/*"
   },
   "dependencies": {
-    "@typhonjs-fvtt/runtime": "^0.2.0-next.5",
+    "@typhonjs-fvtt/runtime": "^0.2.0-next.6",
     "@typhonjs-fvtt/standard": "^0.2.0-next.3",
-    "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
     "svelte": "^4.2.19"
   },
   "devDependencies": {
+    "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
     "typescript": "^5.7.2"
-  },
-  "peerDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^3.1.2",
-    "svelte-preprocess": "^6",
-    "vite": "^5"
   },
   "browserslist": [">5%", "not IE 11"],
   "scripts": {

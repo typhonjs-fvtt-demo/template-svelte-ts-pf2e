@@ -7,6 +7,8 @@ import {
 
 import { sveltePreprocess }   from 'svelte-preprocess';
 
+import { defineConfig }       from 'vite';
+
 // ATTENTION!
 // Please modify the below variables: s_PACKAGE_ID and s_SVELTE_HASH_ID appropriately.
 
@@ -15,14 +17,14 @@ import { sveltePreprocess }   from 'svelte-preprocess';
 const s_PACKAGE_ID = 'modules/template-svelte-ts';
 
 // A short additional string to add to Svelte CSS hash values to make yours unique. This reduces the amount of
-// duplicated framework CSS overlap between many TRL packages enabled on Foundry VTT at the same time. 'tse' is chosen
-// by shortening 'template-svelte-esm'.
+// duplicated framework CSS overlap between many TRL packages enabled on Foundry VTT at the same time. 'tst' is chosen
+// by shortening 'template-svelte-ts'.
 const s_SVELTE_HASH_ID = 'tst';
 
 const s_COMPRESS = false;  // Set to true to compress the module bundle.
 const s_SOURCEMAPS = true; // Generate sourcemaps for the bundle (recommended).
 
-export default ({ mode }) =>
+export default defineConfig(({ mode }) =>
 {
    // Provides a custom hash adding the string defined in `s_SVELTE_HASH_ID` to scoped Svelte styles;
    // This is reasonable to do as the framework styles in TRL compiled across `n` different packages will
@@ -32,7 +34,6 @@ export default ({ mode }) =>
       cssHash: ({ hash, css }) => `svelte-${s_SVELTE_HASH_ID}-${hash(css)}`
    } : {};
 
-   /** @type {import('vite').UserConfig} */
    return {
       root: 'src/',                 // Source location / esbuild root.
       base: `/${s_PACKAGE_ID}/`,    // Base module path that 30001 / served dev directory.
@@ -71,10 +72,15 @@ export default ({ mode }) =>
             // All other paths besides package ID path are served from main Foundry server.
             [`^(?!/${s_PACKAGE_ID}/)`]: 'http://localhost:30000',
 
+            // Rewrite incoming `index.js` request from Foundry to the dev server `index.ts`.
+            [`/${s_PACKAGE_ID}/index.js`]: {
+               target: `http://localhost:30001/${s_PACKAGE_ID}/`,
+               rewrite: (path) => '/index.ts',
+            },
+
             // Enable socket.io from main Foundry server.
             '/socket.io': { target: 'ws://localhost:30000', ws: true }
-         },
-         fs: { strict: false }
+         }
       },
       build: {
          outDir: __dirname,
@@ -105,5 +111,4 @@ export default ({ mode }) =>
          })
       ]
    };
-};
-
+});
