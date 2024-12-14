@@ -9,7 +9,8 @@
    export let elementRoot: HTMLElement;
 
    // You can use `SvelteApp.Context.External` from `#runtime/svelte/application` to get the basic
-   // `SvelteApplication` typed external.
+   // `SvelteApplication` `#external` context. Here we use the extended interface that types `application`
+   // as `BasicApp`.
    const { application } = getContext<BasicApp.External>('#external');
 
    // Shows that you can get the extra options defined in `BasicApp`.
