@@ -3,18 +3,18 @@ import { svelte }             from '@sveltejs/vite-plugin-svelte';
 
 import {
    postcssConfig,
-   terserConfig }             from '@typhonjs-fvtt/runtime/rollup';
+   terserConfig
+}                             from '@typhonjs-fvtt/runtime/rollup';
 
 import { sveltePreprocess }   from 'svelte-preprocess';
 
 import { defineConfig }       from 'vite';
+import moduleJSON             from './module.json' with { type: 'json' };
 
 // ATTENTION!
-// Please modify the below variables: s_PACKAGE_ID and s_SVELTE_HASH_ID appropriately.
+// Please modify the below s_SVELTE_HASH_ID variable appropriately.
 
-// For convenience, you just need to modify the package ID below as it is used to fill in default proxy settings for
-// the dev server.
-const s_PACKAGE_ID = 'modules/template-svelte-ts';
+const s_PACKAGE_ID = `modules/${moduleJSON.id}`;
 
 // A short additional string to add to Svelte CSS hash values to make yours unique. This reduces the amount of
 // duplicated framework CSS overlap between many TRL packages enabled on Foundry VTT at the same time. 'tst' is chosen
@@ -36,7 +36,7 @@ export default defineConfig(({ mode }) =>
 
    return {
       root: 'src/',                 // Source location / esbuild root.
-      base: `/${s_PACKAGE_ID}/`,    // Base module path that 30001 / served dev directory.
+      base: `/${s_PACKAGE_ID}/dist`,    // Base module path that 30001 / served dev directory.
       publicDir: false,             // No public resources to copy.
       cacheDir: '../.vite-cache',   // Relative from root directory.
 
@@ -73,8 +73,8 @@ export default defineConfig(({ mode }) =>
             [`^(?!/${s_PACKAGE_ID}/)`]: 'http://localhost:30000',
 
             // Rewrite incoming `index.js` request from Foundry to the dev server `index.ts`.
-            [`/${s_PACKAGE_ID}/index.js`]: {
-               target: `http://localhost:30001/${s_PACKAGE_ID}/`,
+            [`/${s_PACKAGE_ID}/dist/index.js`]: {
+               target: `http://localhost:30001/${s_PACKAGE_ID}/dist`,
                rewrite: () => '/index.ts',
             },
 
@@ -83,7 +83,7 @@ export default defineConfig(({ mode }) =>
          }
       },
       build: {
-         outDir: __dirname,
+         outDir: '../dist',
          emptyOutDir: false,
          sourcemap: s_SOURCEMAPS,
          brotliSize: true,
