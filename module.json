@@ -14,10 +14,10 @@
     "verified": "12"
   },
   "esmodules": [
-    "dist/index.js"
+    "dist/template-svelte-ts.js"
   ],
   "styles": [
-    "dist/style.css"
+    "dist/template-svelte-ts.css"
   ],
   "flags": {
     "hotReload": {

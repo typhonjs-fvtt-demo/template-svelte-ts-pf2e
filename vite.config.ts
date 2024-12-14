@@ -4,9 +4,14 @@ import {
    postcssConfig,
    terserConfig
 }                             from '@typhonjs-fvtt/runtime/rollup';
+import moduleJSON             from './module.json' with { type: 'json' };
 import { sveltePreprocess }   from 'svelte-preprocess';
 import { defineConfig }       from 'vite';
-import moduleJSON             from './module.json' with { type: 'json' };
+import {
+   existsSync,
+   mkdir,
+   writeFileSync
+}                             from 'fs';
 
 // ATTENTION!
 // Please modify the below s_SVELTE_HASH_ID variable appropriately.
@@ -64,13 +69,13 @@ export default defineConfig(({ mode }) =>
          open: '/game',
          proxy: {
             // Serves static files from main Foundry server.
-            [`^(/${s_PACKAGE_ID}/(assets|lang|packs|dist/style.css))`]: 'http://localhost:30000',
+            [`^(/${s_PACKAGE_ID}/(assets|lang|packs|dist/${moduleJSON.id}.css))`]: 'http://localhost:30000',
 
             // All other paths besides package ID path are served from main Foundry server.
             [`^(?!/${s_PACKAGE_ID}/)`]: 'http://localhost:30000',
 
-            // Rewrite incoming `index.js` request from Foundry to the dev server `index.ts`.
-            [`/${s_PACKAGE_ID}/dist/index.js`]: {
+            // Rewrite incoming `module-id.js` request from Foundry to the dev server `index.ts`.
+            [`/${s_PACKAGE_ID}/dist/${moduleJSON.id}.js`]: {
                target: `http://localhost:30001/${s_PACKAGE_ID}/dist`,
                rewrite: () => '/index.ts',
             },
@@ -90,8 +95,15 @@ export default defineConfig(({ mode }) =>
          lib: {
             entry: './index.ts',
             formats: ['es'],
-            fileName: 'index'
-         }
+            fileName: moduleJSON.id
+         },
+         rollupOptions: {
+            output: {
+               // Rewrite the default style.css to a more recognizable file name.
+               assetFileNames: assetInfo =>
+                  assetInfo.name === 'style.css' ? `${moduleJSON.id}.css` : assetInfo.name as string,
+            },
+         },
       },
 
       // Necessary when using the dev server for top-level await usage inside TRL.
@@ -105,7 +117,25 @@ export default defineConfig(({ mode }) =>
          svelte({
             compilerOptions,
             preprocess: sveltePreprocess()
-         })
+         }),
+         {
+            // A plugin to create dist/ files to make Foundry not complaing about missing files
+            // Without it, you and any contributor would have to run the build command first.
+            name: 'create-dist-files',
+            apply: 'serve',
+            buildStart() {
+               if (!existsSync('dist')) {
+                  mkdir('dist', (err) => {
+                     if (err) throw err;
+                  });
+               }
+
+               const files = [...moduleJSON.esmodules, ...moduleJSON.styles];
+               for (const name of files) {
+                  writeFileSync(name, '', { flag: 'a' });
+               }
+            },
+         },
       ]
    };
 });
