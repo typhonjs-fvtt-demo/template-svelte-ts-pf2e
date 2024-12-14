@@ -1,7 +1,19 @@
 <script lang=ts>
+   import { getContext }         from 'svelte';
+
    import { ApplicationShell }   from '#runtime/svelte/component/application';
 
+   import { type BasicApp }      from './BasicApp';
+
+   // Application shell contract.
    export let elementRoot: HTMLElement;
+
+   // You can use `SvelteApp.Context.External` from `#runtime/svelte/application` to get the basic
+   // `SvelteApplication` typed external.
+   const { application } = getContext<BasicApp.External>('#external');
+
+   // Shows that you can get the extra options defined in `BasicApp`.
+   if (application.options.extra) { /* no-op */ }
 </script>
 
 <!-- This is necessary for Svelte to generate accessors TRL can access for `elementRoot` -->
@@ -11,7 +23,7 @@
 <!-- ApplicationShell exports `elementRoot` which is the outer application shell element -->
 <ApplicationShell bind:elementRoot>
    <main>
-      <h1>Basic application</h1>
+      <h1>Basic Application</h1>
    </main>
 </ApplicationShell>
 
