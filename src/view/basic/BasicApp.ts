@@ -36,7 +36,7 @@ class BasicApp extends SvelteApplication<BasicApp.Options>
 
 declare namespace BasicApp {
    /** Extends the SvelteApp `#external` types specifying a concrete application */
-   export interface External extends SvelteApp.Context.External<BasicApp> {}
+   export type External = SvelteApp.Context.External<BasicApp>;
 
    /** Extended options that you can define. */
    export interface Options extends SvelteApp.Options {
