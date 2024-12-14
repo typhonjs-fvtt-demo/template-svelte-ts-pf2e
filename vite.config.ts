@@ -75,7 +75,7 @@ export default defineConfig(({ mode }) =>
             // Rewrite incoming `index.js` request from Foundry to the dev server `index.ts`.
             [`/${s_PACKAGE_ID}/index.js`]: {
                target: `http://localhost:30001/${s_PACKAGE_ID}/`,
-               rewrite: (path) => '/index.ts',
+               rewrite: () => '/index.ts',
             },
 
             // Enable socket.io from main Foundry server.
