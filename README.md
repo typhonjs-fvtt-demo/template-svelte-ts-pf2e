@@ -19,7 +19,6 @@ More info soon.
   - Allows automatic HMR (hot module reload) for all Svelte components and Foundry language file changes.
 
 ### Production / release build:
-- Create a production build via `npm run build`.
 - Commit to GitHub
 - Create a release / GH action will build the package and bundle assets.
   - The following files and folders are included: module.json assets/ dist/ lang/ packs/ LICENSE
