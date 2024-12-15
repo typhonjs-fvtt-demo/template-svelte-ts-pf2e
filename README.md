@@ -26,7 +26,7 @@ concepts available with Svelte and TRL. Please stop by the
 Discord server to ask any questions or receive support on all things TRL / Svelte / Foundry.
 
 ## Installation (Requires Foundry VTT version 12):
-1. Create your version of the template in a new repo by clicking on the "template" button above. In this process rename
+1. Create your version of the template in a new repo by clicking on the "Use this template" button above. In this process rename
    the repo to your new module name.
 2. Use WebStorm or VSCode to clone your repo into the Foundry VTT data / modules directory (make sure to keep the name
    of your repo as the folder installed in your module directory).
