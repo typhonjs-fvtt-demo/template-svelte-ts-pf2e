@@ -27,28 +27,30 @@ Discord server to ask any questions or receive support on all things TRL / Svelt
 
 ## Installation (Requires Foundry VTT version 12):
 
-Don't skip step 8.... You have read this list right?
+Don't skip step 9.... You have read this list right?
 
 1. Create your version of the template in a new repo by clicking on the "Use this template" button above. In this process rename
    the repo to your new module name.
-2. Use WebStorm or VSCode to clone your repo into the Foundry VTT data / modules directory (make sure to keep the name
-   of your repo as the folder installed in your module directory).
-3. Modify the module `id` in `module.json` to match your new Foundry package ID.
-4. You may of course also change the title & description of the module in `module.json`.
-5. Rename `template-svelte-ts.lock` to the new ID of your module. This prevents Foundry from overwriting your development
+2. Install [NodeJS](https://nodejs.org/) if you haven't done this already.
+3. Use [WebStorm](https://www.jetbrains.com/webstorm/), [VSCode](https://code.visualstudio.com/), IDE of choice or command line to
+   clone your repo into the Foundry VTT `Data/modules` directory (make sure to keep the name
+   of your repo as the folder installed in the modules directory).
+4. Modify the module `id` in `module.json` to match your new Foundry package ID.
+5. You may of course also change the title & description of the module in `module.json`.
+6. Rename `template-svelte-ts.lock` to the new ID of your module. This prevents Foundry from overwriting your development
    repo if you have also released your Foundry package.
-5. In `./vite.config.ts` update `s_SVELTE_HASH_ID` to provide a short unique hash ID; suggestion: base it off your package ID.
-6. Open in your IDE or via command line and proceed to run `npm install`
-7. __Run the NPM script `build` to create the production bundle. This is required to initially build assets into `dist/`.__
-8. Optionally run the NPM script `dev` to start the Vite dev server which uses `esbuild` &
+7. In `./vite.config.ts` update `s_SVELTE_HASH_ID` to provide a short unique hash ID; suggestion: base it off your package ID.
+8. Open in your IDE or via command line and proceed to run `npm install`
+9. __Run the NPM script `build` to create the production bundle. This is required to initially build assets into `dist/`.__
+10. Optionally run the NPM script `dev` to start the Vite dev server which uses `esbuild` &
    HMR (hot module replacement) to dynamically update your running module in real time for all Svelte related components.
    Don't forget to enable language hot reload in the Foundry server admin for hot reloads for language translation files.
-9. Restart Foundry VTT. This is necessary for Foundry to load the new module.
-10. You should now have a new module installed `Template Svelte (TS)` or whatever title you set in step #4 visible in
+11. Restart Foundry VTT. This is necessary for Foundry to load the new module.
+12. You should now have a new module installed `Template Svelte (TS)` or whatever title you set in step #4 visible in
    your modules list.
-11. Launch a game / world of your choice.
-12. Enable your new module under `Manage Modules`.
-13. On reload the basic application will appear instantly as it is rendered in the `ready` Foundry hook from the entry.
+13. Launch a game / world of your choice.
+14. Enable your new module under `Manage Modules`.
+15. On reload the basic application will appear instantly as it is rendered in the `ready` Foundry hook from the entry.
 
 ## Production / release build:
 - Increment the version of your module in `module.json` using [SemVer](https://semver.org/).
