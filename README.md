@@ -26,6 +26,9 @@ concepts available with Svelte and TRL. Please stop by the
 Discord server to ask any questions or receive support on all things TRL / Svelte / Foundry.
 
 ## Installation (Requires Foundry VTT version 12):
+
+Don't skip step 8.... You have read this list right?
+
 1. Create your version of the template in a new repo by clicking on the "Use this template" button above. In this process rename
    the repo to your new module name.
 2. Use WebStorm or VSCode to clone your repo into the Foundry VTT data / modules directory (make sure to keep the name
@@ -34,19 +37,18 @@ Discord server to ask any questions or receive support on all things TRL / Svelt
 4. You may of course also change the title & description of the module in `module.json`.
 5. Rename `template-svelte-ts.lock` to the new ID of your module. This prevents Foundry from overwriting your development
    repo if you have also released your Foundry package.
-5. In `./vite.config.ts` update `s_SVELTE_HASH_ID` which references `modules/template-svelte-esm` to your new module ID.
-   in step #3 above. Also provide a short unique hash ID for `s_SVELTE_HASH_ID`; suggestion: base it off your package ID.
+5. In `./vite.config.ts` update `s_SVELTE_HASH_ID` to provide a short unique hash ID; suggestion: base it off your package ID.
 6. Open in your IDE or via command line and proceed to run `npm install`
-7. Run the NPM script `build` to create the production bundle. This is required to initially build assets into `dist/`.
+7. __Run the NPM script `build` to create the production bundle. This is required to initially build assets into `dist/`.__
 8. Optionally run the NPM script `dev` to start the Vite dev server which uses `esbuild` &
    HMR (hot module replacement) to dynamically update your running module in real time for all Svelte related components.
    Don't forget to enable language hot reload in the Foundry server admin for hot reloads for language translation files.
-8. Restart Foundry VTT. This is necessary for Foundry to load the new module.
-9. You should now have a new module installed `Template Svelte (TS)` or whatever title you set in step #4 visible in
+9. Restart Foundry VTT. This is necessary for Foundry to load the new module.
+10. You should now have a new module installed `Template Svelte (TS)` or whatever title you set in step #4 visible in
    your modules list.
-10. Launch a game / world of your choice.
-11. Enable your new module under `Manage Modules`.
-12. On reload the basic application will appear instantly as it is rendered in the `ready` Foundry hook from the entry.
+11. Launch a game / world of your choice.
+12. Enable your new module under `Manage Modules`.
+13. On reload the basic application will appear instantly as it is rendered in the `ready` Foundry hook from the entry.
 
 ## Production / release build:
 - Increment the version of your module in `module.json` using [SemVer](https://semver.org/).
