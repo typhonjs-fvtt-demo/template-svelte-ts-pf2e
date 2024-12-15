@@ -6,7 +6,8 @@ types will work as well if you can find a stable version.
 
 [TRL API docs](https://typhonjs-fvtt-lib.github.io/api-docs/index.html)
 
-More info soon.
+More info soon. Feel free to join the [TyphonJS Discord server](https://typhonjs.io/discord/) to ask any questions and
+receive support regarding all things TRL / Svelte / Foundry.
 
 ### The basics:
 - Install [Node](https://nodejs.org/)
