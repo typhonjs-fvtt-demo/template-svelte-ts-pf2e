@@ -7,17 +7,17 @@ import BasicAppShell    from './BasicAppShell.svelte';
 // Make sure to check out the `BasicApp` namespace below on defining custom options and interface for the `#external`
 // context.
 
-class BasicApp extends SvelteApplication<BasicApp.Options>
+class BasicApp extends SvelteApplication<BasicAppOptions>
 {
-   constructor(options?: Partial<BasicApp.Options>)
+   constructor(options?: Partial<BasicAppOptions>)
    {
       super(options);
    }
 
-   static get defaultOptions(): BasicApp.Options
+   static get defaultOptions(): BasicAppOptions
    {
-      return foundry.utils.mergeObject<SvelteApp.Options, Partial<BasicApp.Options>>(super.defaultOptions, {
-         extra: true,   // Typed extra option from `BasicApp.Options` below.
+      return foundry.utils.mergeObject<SvelteApp.Options, Partial<BasicAppOptions>>(super.defaultOptions, {
+         extra: true,   // Typed extra option from `BasicAppOptions` below.
          id: 'template-svelte-ts',
          resizable: true,
          minimizable: true,
@@ -34,15 +34,13 @@ class BasicApp extends SvelteApplication<BasicApp.Options>
    }
 }
 
-declare namespace BasicApp {
-   /** Extends the SvelteApp `#external` types specifying a concrete application */
-   export type External = SvelteApp.Context.External<BasicApp>;
+// Define the additional types outside the class
+export type BasicAppExternal = SvelteApp.Context.External<BasicApp>;
 
-   /** Extended options that you can define. */
-   export interface Options extends SvelteApp.Options {
-      /** An example of defining additional options */
-      extra?: boolean;
-   }
+/** Extended options that you can define. */
+export interface BasicAppOptions extends SvelteApp.Options {
+	/** An example of defining additional options */
+	extra?: boolean;
 }
 
 export { BasicApp }
