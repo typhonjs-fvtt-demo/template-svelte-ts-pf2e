@@ -8,7 +8,7 @@ types will work as well if you can find a stable version.
 
 More info soon.
 
-The basics:
+### The basics:
 - Install Node
 - Run `npm install`
 - Run `npm run build` to create initial assets in `dist/`.
@@ -17,7 +17,7 @@ The basics:
   - Enable hot reload of language assets in Foundry server admin.
   - Allows automatic HMR (hot module reload) for all Svelte components and Foundry language file changes.
 
-Production build:
+### Production / release build:
 - Create a production build via `npm run build`.
 - Commit to GitHub
 - Create a release / GH action will build the package and bundle assets.
