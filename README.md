@@ -32,6 +32,8 @@ Discord server to ask any questions or receive support on all things TRL / Svelt
    of your repo as the folder installed in your module directory).
 3. Modify the module `id` in `module.json` to match your new Foundry package ID.
 4. You may of course also change the title & description of the module in `module.json`.
+5. Rename `template-svelte-ts.lock` to the new ID of your module. This prevents Foundry from overwriting your development
+   repo if you have also released your Foundry package.
 5. In `./vite.config.ts` update `s_SVELTE_HASH_ID` which references `modules/template-svelte-esm` to your new module ID.
    in step #3 above. Also provide a short unique hash ID for `s_SVELTE_HASH_ID`; suggestion: base it off your package ID.
 6. Open in your IDE or via command line and proceed to run `npm install`
@@ -47,10 +49,13 @@ Discord server to ask any questions or receive support on all things TRL / Svelt
 12. On reload the basic application will appear instantly as it is rendered in the `ready` Foundry hook from the entry.
 
 ## Production / release build:
+- Increment the version of your module in `module.json` using [SemVer](https://semver.org/).
 - Commit to GitHub
 - Create a release / GH action will build the package and bundle assets.
   - The following files and folders are included: module.json assets/ dist/ lang/ packs/ LICENSE
   - If necessary modify `.github/workflows/main.yml` to change the bundling process.
+- The built package is now available to directly install from your GitHub account by pasting the following link into
+  manifest URL field in the add-on modules / install module screen: `https://github.com/<YOUR GITHUB USER NAME>/<YOUR REPO>/releases/latest/download/module.json`.
 
 ## Updating types:
 - `foundry-pf2e` only provides a direct Github install / linked in `package.json`. Run `npm update` to get the latest.
