@@ -21,3 +21,5 @@ Production build:
 - Create a production build via `npm run build`.
 - Commit to GitHub
 - Create a release / GH action will build the package and bundle assets.
+  - The following files and folders are included: module.json assets/ dist/ lang/ packs/ LICENSE
+  - If necessary modify `.github/workflows/main.yml` to change the bundling process.
