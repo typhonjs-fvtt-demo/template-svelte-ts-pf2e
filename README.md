@@ -10,6 +10,7 @@ More info soon.
 
 ### The basics:
 - Install Node
+- Clone this repo into `Data/modules/template-svelte-ts` in Foundry data directory.
 - Run `npm install`
 - Run `npm run build` to create initial assets in `dist/`.
 - Start the Foundry server
