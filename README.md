@@ -1,5 +1,5 @@
 # template-svelte-ts
-Provides a barebones Typescript template repo to get set up with using the [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/runtime) and [Svelte](https://svelte.dev/).
+Provides a barebones [Foundry VTT](https://foundryvtt.com/) module template repo to get set up with using the [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/runtime) and [Svelte](https://svelte.dev/) and [Typescript](https://www.typescriptlang.org/).
 
 The Foundry types being used is [foundry-pf2e](https://github.com/7H3LaughingMan/foundry-pf2e). The League's community
 types will work as well if you can find a stable version.
@@ -23,3 +23,6 @@ More info soon.
 - Create a release / GH action will build the package and bundle assets.
   - The following files and folders are included: module.json assets/ dist/ lang/ packs/ LICENSE
   - If necessary modify `.github/workflows/main.yml` to change the bundling process.
+
+### Updating types:
+- `foundry-pf2e` only provides a direct Github install / linked in `package.json`. Run `npm update` to get the latest.
