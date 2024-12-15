@@ -9,7 +9,7 @@ types will work as well if you can find a stable version.
 More info soon.
 
 ### The basics:
-- Install Node
+- Install [Node](https://nodejs.org/)
 - Clone this repo into `Data/modules/template-svelte-ts` in Foundry data directory.
 - Run `npm install`
 - Run `npm run build` to create initial assets in `dist/`.
