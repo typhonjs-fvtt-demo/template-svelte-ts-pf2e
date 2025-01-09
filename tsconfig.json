@@ -5,15 +5,17 @@
     "target": "ES2022",
     "baseUrl": ".",
 
-    "types": ["foundry-pf2e/foundry"],
+    "types": [
+      "foundry-pf2e",
+      "@typhonjs-fvtt/runtime/types/fvtt-shim/pf2e"
+    ],
 
     "isolatedModules": true,
     "sourceMap": true,
 
-    "strict": false,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
+    "strict": true,
 
+    "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": true
   },
 
