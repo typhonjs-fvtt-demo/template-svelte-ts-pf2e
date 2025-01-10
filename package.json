@@ -1,5 +1,5 @@
 {
-  "name": "template-svelte-ts",
+  "name": "template-svelte-ts-pf2e",
   "description": "Provides a bare bones Typescript template repo to get set up with using the the TyphonJS Runtime Library and Svelte.",
   "license": "MIT",
   "private": true,
@@ -13,7 +13,7 @@
     "#standard/*": "@typhonjs-fvtt/standard/*"
   },
   "dependencies": {
-    "@typhonjs-fvtt/runtime": "^0.2.0-next.7",
+    "@typhonjs-fvtt/runtime": "^0.2.0-next.8",
     "@typhonjs-fvtt/standard": "^0.2.0-next.4",
     "svelte": "^4.2.19"
   },
