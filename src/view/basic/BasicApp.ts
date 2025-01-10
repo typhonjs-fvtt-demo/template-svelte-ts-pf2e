@@ -20,16 +20,16 @@ class BasicApp extends SvelteApp<BasicApp.Options>
     * If you need to handle setup in a constructor, but do not need to handle any additional options
     * consider using {@link SvelteApp.OptionsCore}.
     *
-    * @param options - BasicApp options to handle.
+    * @param [options] - BasicApp options to handle.
     */
-   constructor(options?: Partial<BasicApp.Options>)
+   constructor(options?: BasicApp.Options)
    {
       super(options);
    }
 
    static get defaultOptions(): BasicApp.Options
    {
-      return foundry.utils.mergeObject<SvelteApp.Options, Partial<BasicApp.Options>>(super.defaultOptions, {
+      return foundry.utils.mergeObject<SvelteApp.Options, BasicApp.Options>(super.defaultOptions, {
          extra: true,   // Typed extra option from `BasicApp.Options` below.
          id: 'template-svelte-ts-pf2e',
          resizable: true,
@@ -46,8 +46,13 @@ class BasicApp extends SvelteApp<BasicApp.Options>
                // TRL handles loading external context to the app shell uniquely. This is loaded into `#external`.
                // This allows easy typing of all external data coming into the mounted app shell component.
 
-               // application: 1,
                TEST: false,
+
+               /** Disallowed protected context property; default external data */
+               // application: 1,
+               // sessionStorage: 1,
+
+               /** Unknown context property below */
                // bogus: 1
             },
             props: {
