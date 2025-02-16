@@ -1,4 +1,5 @@
 import { SvelteApp } from '#runtime/svelte/application';
+import { deepMerge } from '#runtime/util/object';
 
 import BasicAppShell from './BasicAppShell.svelte';
 
@@ -29,7 +30,7 @@ class BasicApp extends SvelteApp<BasicApp.Options>
 
    static get defaultOptions(): BasicApp.Options
    {
-      return foundry.utils.mergeObject<SvelteApp.Options, BasicApp.Options>(super.defaultOptions, {
+      return deepMerge<SvelteApp.Options, BasicApp.Options>(super.defaultOptions, {
          extra: true,   // Typed extra option from `BasicApp.Options` below.
          id: 'template-svelte-ts-pf2e',
          resizable: true,
