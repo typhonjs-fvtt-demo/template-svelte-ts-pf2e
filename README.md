@@ -4,7 +4,7 @@
 [![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
 [![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)](https://github.com/typhonjs-fvtt-demo/template-svelte-esm/blob/main/LICENSE)
 
-Provides a barebones [Foundry VTT](https://foundryvtt.com/) module template repo to get set up with using the [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/runtime), [Svelte](https://svelte.dev/), and [Typescript](https://www.typescriptlang.org/).
+Provides a barebones [Foundry VTT](https://foundryvtt.com/) module template repo to get set up with using the [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/runtime), [Svelte](https://svelte.dev/), and [Typescript](https://www.typescriptlang.org/) for Foundry v13+.
 
 The Foundry types being used is [foundry-pf2e](https://github.com/7H3LaughingMan/foundry-pf2e). The League's community
 types will work as well if you can find a stable version. Please see the [TS League template repo](https://github.com/typhonjs-fvtt-demo/template-svelte-ts-league)
