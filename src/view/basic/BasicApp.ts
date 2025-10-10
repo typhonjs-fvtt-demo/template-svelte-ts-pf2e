@@ -80,7 +80,7 @@ class BasicApp extends SvelteApp<BasicApp.Options>
       buttons.unshift({
          class: 'theme-dark',
          icon: 'fas fa-moon',
-         title: 'Dark Mode disable',
+         label: 'Dark Mode disable',
          styles: { color: 'lightblue' },
          keepMinimized: true,             // When true the header button remains when app is minimized.
 
@@ -89,7 +89,7 @@ class BasicApp extends SvelteApp<BasicApp.Options>
          {
             // Demo of changing the header button title / CSS.
             themeDark = !themeDark;
-            button.title = themeDark ? 'Dark Mode disable' : 'Dark Mode enable';
+            button.label = themeDark ? 'Dark Mode disable' : 'Dark Mode enable';
             button.styles = themeDark ? { color: 'lightblue' } : { color: 'white' };
          }
 
